@@ -34,4 +34,8 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+vim.wo.relativenumber = true
 
+-- gutter line highlight
+vim.o.cursorline = true
+vim.o.cursorlineopt = 'number'

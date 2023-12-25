@@ -27,3 +27,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+
+vim.keymap.set('n', '<C-o>' , "<C-o>zz")
+vim.keymap.set('n', '<C-O>' , "<C-O>zz")

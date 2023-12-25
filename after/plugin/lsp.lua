@@ -69,9 +69,11 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
+  taplo = {},
   pyright = {},
   ruff_lsp = {},
   rust_analyzer = {},
+  zls = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
