@@ -1,4 +1,4 @@
- --  This function gets run when an LSP connects to a particular buffer.
+--  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -70,10 +70,12 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   taplo = {},
-  pyright = {},
+  -- pyright = {},
+  pylsp = {},
   ruff_lsp = {},
   rust_analyzer = {},
   zls = {},
+
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
@@ -111,7 +113,6 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
@@ -160,5 +161,6 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    -- { name = 'nvim_lsp_signature_help'},
   },
 }
