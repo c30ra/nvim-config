@@ -1,3 +1,21 @@
+require("telescope").setup {
+  defaults = {
+    path_display = "smart",
+  },
+  pickers = {
+    buffers = {
+      -- show_all_buffers = true,
+      -- sort_lastused = true,
+      -- theme = "dropdown",
+      -- previewer = false,
+      mappings = {
+        i = {
+          ["<c-d>"] = "delete_buffer",
+        }
+      }
+    }
+  }
+}
 local builtin = require('telescope.builtin')
 -- vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
