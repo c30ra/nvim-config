@@ -68,14 +68,13 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {},
   taplo = {},
   -- pyright = {},
   pylsp = {},
   ruff_lsp = {},
   rust_analyzer = {},
   zls = {},
-
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
@@ -113,6 +112,14 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+-- require('go').setup({
+--   -- other setups ....
+--   lsp_cfg = {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+--     -- other setups
+--   },
+-- })
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
