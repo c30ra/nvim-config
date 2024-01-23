@@ -25,6 +25,6 @@ vim.api.nvim_set_keymap(
   ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
   { noremap = true , desc="Browser"}
 )
--- To get telescope-file-browser loaded and working with telescope,
+-- To get telescope-file-browse loaded and working with telescope,
 -- you need to call load_extension, somewhere after setup function:
 require("telescope").load_extension "file_browser"
