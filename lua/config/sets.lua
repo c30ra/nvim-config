@@ -39,3 +39,6 @@ vim.wo.relativenumber = true
 -- gutter line highlight
 vim.o.cursorline = true
 vim.o.cursorlineopt = 'number'
+
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
