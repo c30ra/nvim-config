@@ -1,30 +1,14 @@
-require("mason-null-ls").setup({
-  ensure_installed = {
-    "black",
-    "ruff",
-    "mypy",
-  }
-})
-
-local null_ls = require("null-ls")
-
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.diagnostics.ruff,
-    null_ls.builtins.diagnostics.mypy,
+require("conform").setup({
+  formatters_by_ft = {
+      lua = { "stylua" },
+      -- Conform will run multiple formatters sequentially
+      python = { "isort", "black" },
+      -- Use a sub-list to run only the first available formatter
+      javascript = { { "prettierd", "prettier" } },
+    },
+  format_on_save = {
+    -- These options will be passed to conform.format()
+    timeout_ms = 500,
+    lsp_fallback = true,
   },
 })
-
-vim.api.nvim_create_augroup("AutoFormat", {})
-
-vim.api.nvim_create_autocmd(
-  "BufWritePost",
-  {
-    -- pattern = "*.py",
-    group = "AutoFormat",
-    callback = function()
-      vim.lsp.buf.format()
-    end,
-  }
-)
