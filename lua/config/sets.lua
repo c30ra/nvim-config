@@ -1,3 +1,4 @@
+vim.o.exrc = true
 -- Set highlight on search
 vim.o.hlsearch = false
 
