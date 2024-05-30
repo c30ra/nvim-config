@@ -1,11 +1,16 @@
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	-- NOTE: Remember that lua is a real programming language, and as such it is possible
 	-- to define small helper and utility functions so you don't have to repeat yourself
 	-- many times.
 	--
 	-- In this case, we create a function that lets us more easily define mappings specific
 	-- for LSP related items. It sets the mode, buffer and description for us each time.
+	if client.name == 'ruff_lsp' then
+    -- Disable hover in favor of Pyright
+		client.server_capabilities.hoverProvider = false
+		client.server_capabilities.linting = false
+	end
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
@@ -70,7 +75,7 @@ local servers = {
 	-- clangd = {},
 	gopls = {},
 	taplo = {},
-	pyright = {},
+	basedpyright = {},
 	-- pylsp = {},
 	ruff_lsp = {},
 	rust_analyzer = {},
@@ -112,6 +117,15 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+
+require('lspconfig').basedpyright.setup {
+  settings = {
+    pyright = {
+      -- Using Ruff's import organizer
+      disableOrganizeImports = true,
+    },
+  },
+}
 -- require('go').setup({
 --   -- other setups ....
 --   lsp_cfg = {
