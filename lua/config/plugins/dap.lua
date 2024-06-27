@@ -15,4 +15,5 @@ return {
     'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python'
   },
+    lazy=true,
 }

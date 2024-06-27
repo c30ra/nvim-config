@@ -6,10 +6,10 @@ local on_attach = function(client, bufnr)
 	--
 	-- In this case, we create a function that lets us more easily define mappings specific
 	-- for LSP related items. It sets the mode, buffer and description for us each time.
-	if client.name == 'ruff_lsp' then
+	if client.name == 'ruff' then
     -- Disable hover in favor of Pyright
 		client.server_capabilities.hoverProvider = false
-		client.server_capabilities.linting = false
+		-- client.server_capabilities.linting = false
 	end
 	local nmap = function(keys, func, desc)
 		if desc then
@@ -77,7 +77,7 @@ local servers = {
 	taplo = {},
 	basedpyright = {},
 	-- pylsp = {},
-	ruff_lsp = {},
+	ruff = {},
 	rust_analyzer = {},
 	zls = {},
 	-- tsserver = {},
@@ -123,6 +123,12 @@ require('lspconfig').basedpyright.setup {
     pyright = {
       -- Using Ruff's import organizer
       disableOrganizeImports = true,
+    },
+	python = {
+      analysis = {
+        -- Ignore all files for analysis to exclusively use Ruff for linting
+        ignore = { '*' },
+      },
     },
   },
 }
