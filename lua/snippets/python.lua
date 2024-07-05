@@ -1,6 +1,6 @@
 return {
   -- A snippet that expands the trigger "hi" into the string "Hello, world!".
 	s("opt", 
-		{t("Hello"),}
+		{i(1, "Type"), t(" | None = None"),}
 	),
  }
