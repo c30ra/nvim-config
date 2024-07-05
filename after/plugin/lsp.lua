@@ -120,14 +120,20 @@ mason_lspconfig.setup_handlers({
 
 require('lspconfig').basedpyright.setup {
   settings = {
-    pyright = {
+    basedpyright = {
       -- Using Ruff's import organizer
       disableOrganizeImports = true,
+	  -- disableLanguageServices = true,
+	  -- reportMissingModuleSource = "none",
+	  -- reportMissingImports = "none",
+	  -- reportUndefinedVariable = "none",
+	  reportAny = "none",
     },
 	python = {
       analysis = {
         -- Ignore all files for analysis to exclusively use Ruff for linting
         ignore = { '*' },
+		typeCheckingMode = "off"
       },
     },
   },
