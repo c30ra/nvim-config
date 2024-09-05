@@ -7,7 +7,7 @@ require("rip-substitute").setup {
 		position = "bottom", -- "top"|"bottom"
 	},
 	prefill = {
-		normal = "cursorWord", -- "cursorWord"|false
+		normal = "cursorWord",   -- "cursorWord"|false
 		visual = "selectionFirstLine", -- "selectionFirstLine"|false
 		startInReplaceLineIfPrefill = false,
 	},
@@ -27,10 +27,10 @@ require("rip-substitute").setup {
 		},
 	},
 	regexOptions = {
+		startWithFixedStringsOn = false,
+		startWithIgnoreCase = false,
 		-- pcre2 enables lookarounds and backreferences, but performs slower
 		pcre2 = true,
-		---@type "case-sensitive"|"ignore-case"|"smart-case"
-		casing = "case-sensitive",
 		-- disable if you use named capture groups (see README for details)
 		autoBraceSimpleCaptureGroups = true,
 	},
