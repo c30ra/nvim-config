@@ -1,3 +1,7 @@
+if vim.g.neovide then
+    vim.g.neovide_scale_factor = 0.8
+end
+
 vim.o.exrc = true
 -- Set highlight on search
 vim.o.hlsearch = false
