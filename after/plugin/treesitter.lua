@@ -1,4 +1,4 @@
--- diagnostics = { disable = { 'missing-fields' } },
+-- diagnostics = { diable = { 'missing-fields' } },
 require("nvim-treesitter.configs").setup({
 	auto_install = true,
 
