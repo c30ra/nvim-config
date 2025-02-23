@@ -29,5 +29,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 
-vim.keymap.set('n', '<C-o>' , "<C-o>zz")
-vim.keymap.set('n', '<C-O>' , "<C-O>zz")
+vim.keymap.set('n', '<C-o>', "<C-o>zz")
+vim.keymap.set('n', '<C-O>', "<C-O>zz")
+
+vim.keymap.set({ 'o', 'x' }, "ib", "i{", { remap = true })
+vim.keymap.set({ 'o', 'x' }, "ab", "a{", { remap = true })
