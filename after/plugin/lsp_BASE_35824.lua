@@ -6,7 +6,7 @@ local on_attach = function(client, bufnr)
 	--
 	-- In this case, we create a function that lets us more easily define mappings specific
 	-- for LSP related items. It sets the mode, buffer and description for us each time.
-	if client.name == "ruff" then
+	if client.name == 'ruff' then
 		-- Disable hover in favor of Pyright
 		client.server_capabilities.hoverProvider = false
 		-- client.server_capabilities.linting = false
@@ -22,10 +22,10 @@ local on_attach = function(client, bufnr)
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-	nmap("<leader>gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-	nmap("<leader>gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-	nmap("<leader>gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-	-- nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+	nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+	nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+	nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
@@ -67,7 +67,6 @@ local servers = {
 	taplo = {},
 	pyright = {},
 	-- pylsp = {},
-	-- jedi_language_server = {},
 	ruff = {},
 	rust_analyzer = {},
 	zls = {},
@@ -89,8 +88,7 @@ require("neodev").setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-require("blink.cmp").get_lsp_capabilities(capabilities)
--- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
@@ -109,27 +107,92 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+-- require ('lspconfig').pylsp.setup {
+-- settings = {
+      -- pylsp = {
+         -- plugins = {
+            -- configurationSources = { "flake8" },
+            -- autopep8 = { enabled = false },
+            -- flake8 = { enabled = true },
+            -- mccabe = { enabled = false },
+            -- preload = { enabled = true },
+            -- pycodestyle = { enabled = true },
+            -- pydocstyle = { enabled = false },
+            -- pyflakes = { enabled = false },
+            -- pylint = { enabled = false },
+            -- yapf = { enabled = false },
 
-require("lspconfig").pyright.setup({
-	settings = {
-		pyright = {
-			-- Using Ruff's import organizer
-			disableOrganizeImports = true,
-			-- disableLanguageServices = true,
-			-- reportMissingModuleSource = "none",
-			-- reportMissingImports = "none",
-			-- reportUndefinedVariable = "none",
-			reportAny = "none",
-		},
-		python = {
-			analysis = {
-				-- Ignore all files for analysis to exclusively use Ruff for linting
-				ignore = { "*" },
-				typeCheckingMode = "off",
-			},
-		},
-	},
-})
+            -- -- https://github.com/python-rope/pylsp-rope
+            -- rope_autoimport = { enabled = true, memory = true },
+            -- rope_completion = { enabled = true, eager = true },
+
+            -- -- 3rd party plugins
+            -- -- https://github.com/Richardk2n/pylsp-mypy
+            -- pylsp_mypy = {
+               -- live_mode = false,
+               -- report_progress = true,
+               -- dmypy = true,
+            -- },
+
+            -- isort = { enabled = false },
+            -- black = { enabled = false, cache_config = true },
+            -- ruff = { enabled = false },
+
+            -- -- Jedi configuration
+            -- jedi_hover = { enabled = true },
+            -- jedi_signature_help = { enabled = true },
+            -- jedi_references = { enabled = true },
+            -- jedi_symbols = { enabled = true },
+            -- jedi_definition = {
+               -- enabled = true,
+               -- follow_imports = true,
+               -- follow_builtin_imports = true,
+               -- follow_builtin_definitions = true,
+            -- },
+            -- jedi_completion = {
+               -- enabled = true,
+               -- include_params = true,
+               -- include_class_objects = false,
+               -- include_function_objects = false,
+               -- fuzzy = false,
+               -- eager = false,
+               -- resolve_at_most = 25,
+               -- cache_for = {
+                  -- "pandas",
+                  -- "numpy",
+                  -- "tensorflow",
+                  -- "matplotlib",
+                  -- "pydantic",
+                  -- "fastapi",
+                  -- "flask",
+                  -- "sqlalchemy",
+                  -- "dagster",
+               -- },
+            -- },
+         -- },
+      -- },
+   -- },
+-- }
+require('lspconfig').pyright.setup {
+  settings = {
+    pyright = {
+      -- Using Ruff's import organizer
+      disableOrganizeImports = true,
+	  -- disableLanguageServices = true,
+	  -- reportMissingModuleSource = "none",
+	  -- reportMissingImports = "none",
+	  -- reportUndefinedVariable = "none",
+	  reportAny = "none",
+    },
+	python = {
+      analysis = {
+        -- Ignore all files for analysis to exclusively use Ruff for linting
+        ignore = { '*' },
+		typeCheckingMode = "off"
+      },
+    },
+  },
+}
 -- require('go').setup({
 --   -- other setups ....
 --   lsp_cfg = {

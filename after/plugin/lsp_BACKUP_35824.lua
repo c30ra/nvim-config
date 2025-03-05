@@ -109,7 +109,156 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+<<<<<<< HEAD
+-- require ('lspconfig').pylsp.setup {
+-- settings = {
+-- pylsp = {
+-- plugins = {
+-- configurationSources = { "flake8" },
+-- autopep8 = { enabled = false },
+-- flake8 = { enabled = true },
+-- mccabe = { enabled = false },
+-- preload = { enabled = true },
+-- pycodestyle = { enabled = true },
+-- pydocstyle = { enabled = false },
+-- pyflakes = { enabled = false },
+-- pylint = { enabled = false },
+-- yapf = { enabled = false },
 
+-- -- https://github.com/python-rope/pylsp-rope
+-- rope_autoimport = { enabled = true, memory = true },
+-- rope_completion = { enabled = true, eager = true },
+
+-- -- 3rd party plugins
+-- -- https://github.com/Richardk2n/pylsp-mypy
+-- pylsp_mypy = {
+-- live_mode = false,
+-- report_progress = true,
+-- dmypy = true,
+-- },
+
+-- isort = { enabled = false },
+-- black = { enabled = false, cache_config = true },
+-- ruff = { enabled = false },
+
+-- -- Jedi configuration
+-- jedi_hover = { enabled = true },
+-- jedi_signature_help = { enabled = true },
+-- jedi_references = { enabled = true },
+-- jedi_symbols = { enabled = true },
+-- jedi_definition = {
+-- enabled = true,
+-- follow_imports = true,
+-- follow_builtin_imports = true,
+-- follow_builtin_definitions = true,
+-- },
+-- jedi_completion = {
+-- enabled = true,
+-- include_params = true,
+-- include_class_objects = false,
+-- include_function_objects = false,
+-- fuzzy = false,
+-- eager = false,
+-- resolve_at_most = 25,
+-- cache_for = {
+-- "pandas",
+-- "numpy",
+-- "tensorflow",
+-- "matplotlib",
+-- "pydantic",
+-- "fastapi",
+-- "flask",
+-- "sqlalchemy",
+-- "dagster",
+-- },
+-- },
+-- },
+-- },
+-- },
+-- }
+=======
+
+-- require("lspconfig").pylsp.setup({
+-- 	cmd = { "pylsp", "-vv", "--log-file", "/tmp/nvim-pylsp.log" },
+-- 	cmd_env = { VIRTUAL_ENV = ".venv" },
+-- 	settings = {
+-- 		pylsp = {
+-- 			plugins = {
+-- 				configurationSources = { "flake8" },
+-- 				autopep8 = { enabled = false },
+-- 				flake8 = { enabled = true, maxLineLength = 120 },
+-- 				mccabe = { enabled = false },
+-- 				preload = { enabled = true },
+-- 				pycodestyle = { enabled = false },
+-- 				pydocstyle = { enabled = false },
+-- 				pyflakes = { enabled = false },
+-- 				pylint = { enabled = false },
+-- 				yapf = { enabled = false },
+--
+-- 				-- https://github.com/python-rope/pylsp-rope
+-- 				rope_completion = {
+-- 					enabled = true,
+-- 				},
+-- 				rope_autoimport = {
+-- 					enabled = true,
+-- 					completions = {
+-- 						enabled = true,
+-- 					},
+-- 					code_actions = {
+-- 						enabled = true,
+-- 					},
+-- 				},
+-- 				-- rope_completion = { enabled = true, eager = true },
+--
+-- 				-- 3rd party plugins
+-- 				-- https://github.com/Richardk2n/pylsp-mypy
+-- 				pylsp_mypy = {
+-- 					live_mode = false,
+-- 					report_progress = true,
+-- 					dmypy = true,
+-- 				},
+-- 				pylsp_rope = { enabled = true },
+--
+-- 				isort = { enabled = false },
+-- 				black = { enabled = false, cache_config = true },
+-- 				ruff = { enabled = false },
+--
+-- 				-- Jedi configuration
+-- 				jedi_hover = { enabled = true },
+-- 				jedi_signature_help = { enabled = true },
+-- 				jedi_references = { enabled = true },
+-- 				jedi_symbols = { enabled = true },
+-- 				jedi_definition = {
+-- 					enabled = true,
+-- 					follow_imports = true,
+-- 					follow_builtin_imports = true,
+-- 					follow_builtin_definitions = true,
+-- 				},
+-- 				jedi_completion = {
+-- 					enabled = true,
+-- 					include_params = true,
+-- 					include_class_objects = false,
+-- 					include_function_objects = false,
+-- 					fuzzy = true,
+-- 					eager = false,
+-- 					resolve_at_most = 25,
+-- 					cache_for = {
+-- 						"pandas",
+-- 						"numpy",
+-- 						"tensorflow",
+-- 						"matplotlib",
+-- 						"pydantic",
+-- 						"fastapi",
+-- 						"flask",
+-- 						"sqlalchemy",
+-- 						"dagster",
+-- 					},
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- })
+>>>>>>> 00f7d7b (some old changes, dopn't remember)
 require("lspconfig").pyright.setup({
 	settings = {
 		pyright = {
