@@ -65,7 +65,7 @@ local servers = {
 	-- clangd = {},
 	gopls = {},
 	taplo = {},
-	pyright = {},
+	basedpyright = {},
 	-- pylsp = {},
 	-- jedi_language_server = {},
 	ruff = {},
@@ -110,7 +110,7 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
-require("lspconfig").pyright.setup({
+require("lspconfig").basedpyright.setup({
 	settings = {
 		pyright = {
 			-- Using Ruff's import organizer
