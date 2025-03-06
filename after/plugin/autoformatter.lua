@@ -1,4 +1,9 @@
 require("conform").setup({
+	formatters = {
+		stylua = {
+			ident_width = 2,
+		},
+	},
 	formatters_by_ft = {
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
@@ -30,4 +35,3 @@ end, { range = true, desc = "Format current buffer with LSP" })
 -- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 --     command = "lua vim.lsp.buf.format()"
 -- })
-
