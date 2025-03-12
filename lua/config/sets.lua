@@ -1,6 +1,6 @@
 if vim.g.neovide then
     vim.g.neovide_scale_factor = 0.8
-	vim.o.guifont = "JetBrainsMono NF:14" 
+    vim.o.guifont = "JetBrainsMono NF:14"
 end
 
 vim.o.exrc = true
@@ -48,3 +48,5 @@ vim.o.cursorlineopt = 'number'
 
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
+vim.o.expandtab = true
+vim.o.softtabstop = 4
