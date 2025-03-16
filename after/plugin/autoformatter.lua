@@ -1,24 +1,30 @@
 require("conform").setup({
 	formatters = {
 		stylua = {
-			ident_width = 2,
+			ident_width = 4,
 		},
 	},
 	formatters_by_ft = {
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
-		python = { "isort", "black" },
+		python = function(bufnr)
+			if require("conform").get_formatter_info("ruff_format", bufnr).available then
+				return { "ruff_format" }
+			else
+				return { "isort", "black" }
+			end
+		end,
 		-- Use a sub-list to run only the first available formatter
-		javascript = { { "prettierd", "prettier" } },
+		javascript = { "prettierd", "prettier", stop_after_first = true },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
 		timeout_ms = 500,
-		lsp_format = "prefer",
+		-- lsp_format = "prefer",
 	},
 })
 
-require("mason-conform").setup()
+-- require("mason-conform").setup()
 
 vim.api.nvim_create_user_command("Format", function(args)
 	local range = nil

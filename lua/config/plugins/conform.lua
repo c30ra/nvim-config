@@ -1,7 +1,7 @@
 return {
-  'stevearc/conform.nvim',
+  "stevearc/conform.nvim",
   dependencies = {
-    "zapling/mason-conform.nvim"
+    "zapling/mason-conform.nvim",
   },
   opts = {},
 }
