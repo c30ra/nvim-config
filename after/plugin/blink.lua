@@ -1,1 +1,1 @@
-require("blink.cmp").setup()
+--require("blink.cmp").setup()

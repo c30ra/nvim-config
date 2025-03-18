@@ -15,7 +15,10 @@ return {
 	opts = {
 		-- See the full "keymap" documentation for information on defining your own keymap.
 		cmdline = {
-			keymap = { preset = "super-tab" },
+			--
+			keymap = { preset = 'enter',  ['<C-space>'] = {"show"}},
+			enabled = true,
+			--keymap = { preset = "super-tab" },
 		},
 		keymap = {
 			preset = "enter",
