@@ -23,6 +23,10 @@ return {
 		keymap = {
 			preset = "enter",
 		},
+		signature = {
+
+			enabled = true,
+		},
 		completion = {
 			accept = { auto_brackets = { enabled = false } },
 			list = { selection = { preselect = true, auto_insert = true } },
