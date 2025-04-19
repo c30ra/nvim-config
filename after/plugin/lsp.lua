@@ -64,7 +64,7 @@ require("mason-lspconfig").setup()
 local servers = {
 	-- clangd = {},
 	taplo = {},
-	basedpyright = {},
+	-- basedpyright = {},
 	-- pylsp = {},
 	-- jedi_language_server = {},
 	ruff = {},
@@ -109,64 +109,56 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
-require("lspconfig").basedpyright.setup({
-	settings = {
-		pyright = {
-			-- Using Ruff's import organizer
-			disableOrganizeImports = true,
-			-- disableLanguageServices = true,
-			-- reportMissingModuleSource = "none",
-			-- reportMissingImports = "none",
-			-- reportUndefinedVariable = "none",
-			reportAny = "none",
-		},
-		python = {
-			analysis = {
-				-- Ignore all files for analysis to exclusively use Ruff for linting
-				ignore = { "*" },
-				typeCheckingMode = "off",
-			},
-		},
-	},
-})
-
--- local lspconfig = require("lspconfig")
--- local configs = require("lspconfig.configs")
---
--- if not configs.sith_lsp then
--- 	local root_files = {
--- 		"pyproject.toml",
--- 		"requirements.txt",
--- 		"Pipfile",
--- 		"pyrightconfig.json",
--- 		".git",
--- 	}
--- 	configs.sith_lsp = {
--- 		default_config = {
--- 			cmd = { "sith-lsp" },
--- 			root_dir = function(fname)
--- 				return lspconfig.util.root_pattern(unpack(root_files))(fname)
--- 			end,
--- 			single_file_support = true,
--- 			filetypes = { "python" },
--- 			settings = {
--- 				-- Settings for the server goes here.
--- 				-- Config example
--- 				ruff = {
--- 					lint = {
--- 						enable = false
--- 					}
--- 				}
+-- require("lspconfig").basedpyright.setup({
+-- 	settings = {
+-- 		pyright = {
+-- 			-- Using Ruff's import organizer
+-- 			disableOrganizeImports = true,
+-- 			-- disableLanguageServices = true,
+-- 			-- reportMissingModuleSource = "none",
+-- 			-- reportMissingImports = "none",
+-- 			-- reportUndefinedVariable = "none",
+-- 			reportAny = "none",
+-- 		},
+-- 		python = {
+-- 			analysis = {
+-- 				-- Ignore all files for analysis to exclusively use Ruff for linting
+-- 				ignore = { "*" },
+-- 				typeCheckingMode = "off",
 -- 			},
 -- 		},
--- 	}
--- end
--- lspconfig.sith_lsp.setup({})
--- require('go').setup({
---   -- other setups ....
---   lsp_cfg = {
---     capabilities = capabilities,
---     on_attach = on_attach,
---     -- other setups
---   },
+-- 	},
 -- })
+
+local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
+
+if not configs.sith_lsp then
+	local root_files = {
+		"pyproject.toml",
+		"requirements.txt",
+		"Pipfile",
+		"pyrightconfig.json",
+		".git",
+	}
+	configs.sith_lsp = {
+		default_config = {
+			cmd = { "sith-lsp" },
+			root_dir = function(fname)
+				return lspconfig.util.root_pattern(unpack(root_files))(fname)
+			end,
+			single_file_support = true,
+			filetypes = { "python" },
+			settings = {
+				-- Settings for the server goes here.
+				-- Config example
+				ruff = {
+					lint = {
+						enable = false,
+					},
+				},
+			},
+		},
+	}
+end
+lspconfig.sith_lsp.setup({})
